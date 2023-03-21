@@ -4,7 +4,7 @@ from typing import List
 
 class Solution:
     def canSeePersonsCount(self, heights: List[int]) -> List[int]:
-        output = [0 for x in range(len(heights))]
+        output = [0 for _ in range(len(heights))]
         descending_strike = []
 
         for idx, height in enumerate(heights):
@@ -18,7 +18,7 @@ class Solution:
             if descending_strike:
                 # descending_strike not empty means prev height is bigger
                 # so it can see current person also
-                # but before him no-one can see
+                # but no-one before him can see
                 output[descending_strike[-1]] += 1
 
             descending_strike.append(idx)

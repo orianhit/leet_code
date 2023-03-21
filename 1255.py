@@ -1,13 +1,6 @@
 # 1255. Maximum Score Words Formed by Letters
 from typing import List
-from itertools import chain, combinations, permutations
 from collections import Counter
-
-
-#  from stackoverflow
-def powerset(iterable):
-    s = list(iterable)  # allows duplicate elements
-    return chain.from_iterable(combinations(s, r) for r in range(len(s) + 1))
 
 
 class Solution:

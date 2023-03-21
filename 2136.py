@@ -1,21 +1,26 @@
 # 2136. Earliest Possible Day of Full Bloom
+from typing import List
 
-class Solution(object):
-    def earliestFullBloom(self, plantTime, growTime):
-        """
-        :type plantTime: List[int]
-        :type growTime: List[int]
-        :rtype: int
-        """
-        sorted_by_grow = [i for i,_ in sorted(enumerate(growTime), key=lambda x: -x[1])]
-        overall_grow = 0
-        overall = 0
+
+class Solution:
+    def earliestFullBloom(self, plantTime: List[int], growTime: List[int]) -> int:
+        grow_time_idx_desc = [i for i,_ in sorted(enumerate(growTime), key=lambda x: -x[1])]
+
+        overall_planting_time = 0
+        overall_time = 0
 
         for idx in range(len(plantTime)):
-            overall_grow += plantTime[sorted_by_grow[idx]]
-            overall = max(overall_grow + growTime[sorted_by_grow[idx]], overall)
+            # stating from max grow time
+            max_grow_time_idx = grow_time_idx_desc[idx]
+            # planting from max to min force minimum planting time
+            overall_planting_time += plantTime[max_grow_time_idx]
 
-        return overall
+            # add time only if current planting and last plat growing extends overall time
+            overall_time = max(
+                overall_planting_time + growTime[max_grow_time_idx],
+                overall_time)
+
+        return overall_time
 
 
 
