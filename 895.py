@@ -1,5 +1,4 @@
 # 895. Maximum Frequency Stack
-#  Litals
 
 from collections import defaultdict, Counter
 

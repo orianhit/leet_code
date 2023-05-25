@@ -1,5 +1,4 @@
 # 1944. Number of Visible People in a Queue
-# Lital
 from typing import List
 
 
